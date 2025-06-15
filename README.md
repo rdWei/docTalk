@@ -5,7 +5,6 @@
 <h6 align="center">
 TUI chat over Google Docs
     </h6>
-<h1></h1>
 
 # TODO
 - Add encription
