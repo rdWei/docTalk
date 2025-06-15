@@ -1,10 +1,6 @@
 <p align="center">
-    <img src="images/logo.png">
+    <img src="images/logo2.png">
 </p>
-
-<h6 align="center">
-TUI chat over Google Docs
-    </h6>
 
 # TODO
 - Add encription
