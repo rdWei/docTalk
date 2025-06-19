@@ -18,3 +18,11 @@
 <br>
 
 _docTalk_ is a messaging app that uses Google Forms to send encrypted messages. Users choose a key to encrypt messages, which are only decrypted during reading.
+
+- [Installation](#Installation)
+    - [Build from Source](#build-from-source)
+    - [Download precompiled releases](#Download-precompiled-releases)
+- [Setup](#Setup)
+    - [Get google credentials]()
+    - [Get doc id]()
+- [Usage](#Usage)
