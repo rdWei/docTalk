@@ -3,11 +3,27 @@ package main
 import (
 	"fmt"
 	"time"
+	"os"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	err := godotenv.Load("settings.env")
+	if err != nil {
+		fmt.Println("Error")
+	}
+
+
+	DOCUMENT_ID := os.Getenv("DOCUMENT_ID")
+	SERVICE_ACCOUNT_FILE:= os.Getenv("SERVICE_ACCOUNT_FILE")
+
+	
+	USERNAME := os.Getenv("USERNAME")
+	COLOR := os.Getenv("COLOR")
+
 	app := tview.NewApplication()
 	/*
 	messages := []Message{
