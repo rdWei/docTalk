@@ -24,6 +24,8 @@ func main() {
 	USERNAME := os.Getenv("USERNAME")
 	COLOR := os.Getenv("COLOR")
 
+	PASSWORD := os.Getenv("PASSWORD")
+
 	app := tview.NewApplication()
 	/*
 	messages := []Message{
@@ -49,9 +51,10 @@ func main() {
 			if msg.Sender == USERNAME {
 				sender = "You"
 			}
+			decMessage, _ := decrypt(msg.Message, PASSWORD)
 			timeStr := msg.Timestamp.Format("15:04:05")
 			fmt.Fprintf(chatView, "[gray]%s [gray]<@[white][%s]%s[white][gray]> [white]%s\n",
-			timeStr, msg.Color, sender, msg.Message)
+			timeStr, msg.Color, sender, decMessage)
 		}
 	}
 
@@ -64,11 +67,11 @@ func main() {
 	    SetFieldBackgroundColor(tcell.ColorDefault).
 	    SetDoneFunc(func(key tcell.Key) {
 		if key == tcell.KeyEnter {
-		    text := input.GetText()
-		    input.SetText("") // pulisci subito il campo
-		    go func(txt string) {  // esegui in background
+		    encText, _:= encrypt(input.GetText(), PASSWORD)
+		    input.SetText("") 
+		    go func(txt string) {  
 			_ = AppendMessageToDoc(DOCUMENT_ID, SERVICE_ACCOUNT_FILE, USERNAME, COLOR, txt)
-		    }(text)
+		    }(encText)
 		}
 	    })
 
@@ -143,7 +146,7 @@ func main() {
 
 
 	app.SetRoot(layout, true)
-	app.SetFocus(input) // Focus all’avvio sull’input
+	app.SetFocus(input) 
 
 	if err := app.Run(); err != nil {
 		panic(err)
