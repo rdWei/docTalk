@@ -1,7 +1,7 @@
 <p align="center">
     <img src="images/logo2.png">
 </p>
-
+ 
 # TODO
 - Add encription
 - Add command (ex: "/clear")
